@@ -2,7 +2,6 @@
 import '../style/HomePage.css'
 import React,{useState, useEffect} from 'react'
 import ImageCard from '../component/ImageCard'
-// import { Link } from 'react-router-dom';
 
 function HomePage() {
     const [data, setData] = useState([]);
@@ -12,7 +11,7 @@ function HomePage() {
             const responce = await fetch('https://api.slingacademy.com/v1/sample-data/photos?limit=20');
             const imageData = await responce.json()
             setData(imageData.photos);
-            console.log(imageData.photos)
+            // console.log(imageData.photos)
         } catch (error) {
             alert(error.message);
         }  
