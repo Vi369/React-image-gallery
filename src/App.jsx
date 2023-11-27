@@ -1,14 +1,17 @@
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
 import ImageDetails from './Pages/ImageDetails'
-// import {Route, Router, createBrowserRouter} from 'react-router-dom'
+
 
 function App() {
 
 
   return (
     <>
-      <HomePage/>
-    {/* < ImageDetails/> */}
+      <Routes>
+        <Route path="/" element ={<HomePage/>} />
+        <Route path="/:id" element={<ImageDetails />}/>
+      </Routes>
     </>
   )
 }

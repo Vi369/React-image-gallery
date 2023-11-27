@@ -2,6 +2,8 @@
 import '../style/HomePage.css'
 import React,{useState, useEffect} from 'react'
 import ImageCard from '../component/ImageCard'
+// import { Link } from 'react-router-dom';
+
 function HomePage() {
     const [data, setData] = useState([]);
     // fetch image data
@@ -31,12 +33,12 @@ function HomePage() {
                     // console.log(eachImageObj.id)
                     // console.log(eachImageObj.url);
                     return (
-                        <ImageCard 
-                        key={eachImageObj.id}
-                        id={eachImageObj.id}
-                        url={eachImageObj.url}
-                        title = {eachImageObj.title}
+                         <ImageCard 
+                            id={eachImageObj.id}
+                            url={eachImageObj.url}
+                            title = {eachImageObj.title}
                     />
+                       
                     )
                 } )
             }

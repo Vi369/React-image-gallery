@@ -1,29 +1,50 @@
 // import css 
 import '../style/ImageDetails.css'
-import React,{useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import React,{useState,useEffect} from 'react'
+import { useParams, Link} from 'react-router-dom';
 
 
 function ImageDetails() {
-  const id = useParams();
+  const [image, setImage] = useState({});
+  const {id} = useParams();
+  console.log(id);
   const oneImageDeatail = async()=>{
-    const responce = await fetch(`https://api.slingacademy.com/v1/sample-data/photos/${id}`);
-    const imageDetails = await responce.json();
-    console.log(imageDetails);
+    try {
+      const responce = await fetch(`https://api.slingacademy.com/v1/sample-data/photos/${id}`);
+      const imageDetails = await responce.json();
+      setImage(imageDetails.photo)
+      console.log(imageDetails.photo);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
   useEffect( ()=>{
     oneImageDeatail();
   },[])
   return (
-    <div className='imageDetailsPage'>
-      <img src="" alt="" />
-      <h2>
-        title
-      </h2>
-      <p>
-        description
-      </p>
-    </div>
+    <>
+    <header className='header'>
+      <Link
+       to={'/'}
+       className='button'
+      >
+        Back
+      </Link>
+      <h1>Image Details</h1>
+    </header>
+      <div className='imageDetailsContainer'>
+        <div className='leftContainer'>
+          <img src={image.url} alt="" />
+        </div>
+        <div className='rightContainer'>
+            <h2>Title :)</h2>
+            <p>{image.title}</p>
+            <h2>Description :)</h2>
+            <p>{image.description}</p>
+        </div>
+      </div>
+    </>
+   
   )
 }
 
