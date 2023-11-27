@@ -37,10 +37,8 @@ function ImageDetails() {
           <img src={image.url} alt="" />
         </div>
         <div className='rightContainer'>
-            <h2>Title :)</h2>
-            <p>{image.title}</p>
-            <h2>Description :)</h2>
-            <p>{image.description}</p>
+            <h2>Title :) <span>{image.title}</span></h2>
+            <h2>Description :) <span>{image.description}</span></h2>   
         </div>
       </div>
     </>
